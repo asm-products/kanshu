@@ -115,11 +115,13 @@ a {
 	text-align: center;
 }
 .subMenu a:hover {
-	background: #f3f3f3;
+	background: #e6473d;
+        color: #FFFFFF;
 }
 
 .active {
-	background: #f3f3f3;
+	background: #e6473d;
+        color: #ffffff;
 }
 .end {
 	margin: 0;
@@ -133,8 +135,8 @@ a {
 	min-height: 130px;
 	background:#fff;
 	color:#858585;
-	padding: 50px 0;
-	height: 475px;
+	padding-top: 17px;
+	height: 550px;
         background-image: url("image/pattern_background.png");
 	
 }
@@ -194,8 +196,9 @@ a {
     //border: 1px solid black;
     position: absolute;
     top: 100px;
-    left: 30px;
+    left: 0;
     text-align: center;
+    width: 500px;
 }
 
 .logo {
@@ -206,8 +209,8 @@ a {
 .subtitle { 
     color: #f0493e;
     //border: 1px solid black;
-    font-size: 2.5em;
-    font-weight: 500;
+    font-size: 1.25em;
+    font-weight: 600;
 }
 
 .text1{
@@ -220,8 +223,7 @@ a {
 .shop {
     position: absolute;
     //border: 1px solid black;
-    right: 15px;
-    left: 15px;
+    left: 0;
 }
 
 .im_1 {
@@ -345,16 +347,9 @@ h4 {
 h5 {
     color: #7e7e7e;
     font-size: 1.25em;
-    font-weight: 200;
+    font-weight: 600;
     text-align: center;
-    margin-top: 20px;
-}
-
-h6 {
-    color: #7e7e7e;
-    font-size: 1.25em;
-    font-weight: 400;
-    text-align: center;
+    margin-top: 5px;
 }
 
 .s53 {
@@ -363,4 +358,11 @@ h6 {
     border-top: 3px solid #f3f3f3;
     bottom:0;
     width: 100%;
+    display: table;
+    z-index: 20;
+}
+
+.shops5 {
+    position: relative;
+    margin-top: 5px;
 }
