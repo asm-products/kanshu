@@ -6,7 +6,7 @@ body {
 	color: #e5e5e5;
 	font-size: 12px;
 	background:#bfbfbf;
-
+        overflow: auto;
 	
 }
 
@@ -73,7 +73,7 @@ a {
 	margin: 0 auto;
 	position: relative;
 	min-height: 50px;
-	padding:30px 0;
+	//padding:30px 0;
 	font-size: 18px;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
@@ -90,13 +90,16 @@ a {
 	height: 50px;
 	z-index: 1000;
 	width: 100%;
-	background: #0977bc;
+	background: #FFFFFF;
+        color: #858585;
+        border: 1px solid #f3f3f3;
+        
 }
 
 .subMenu .inner {
 	padding:0;
-	font-weight: 400;
 	margin: 0 auto;
+        font-weight: 600;
 }
 
 
@@ -110,15 +113,15 @@ a {
 	font-size: 14px;
 	padding: 15px 2% 0 2%;
 	text-align: center;
-	
-	color: #fff;
 }
 .subMenu a:hover {
-	background: #1783c7;
+	background: #e6473d;
+        color: #FFFFFF;
 }
 
 .active {
-	background: #25aae1;
+	background: #e6473d;
+        color: #ffffff;
 }
 .end {
 	margin: 0;
@@ -131,47 +134,235 @@ a {
 .sTop {
 	min-height: 130px;
 	background:#fff;
-	color:#3d3d3d;
-	padding: 50px 0;
-	height: 300px;
+	color:#858585;
+	padding-top: 17px;
+	height: 550px;
+        background-image: url("image/pattern_background.png");
 	
 }
 
 .s1 {
-	background:#184764;
-	color:#fff;
+	background:#FFFFFF;
+	color:#7e7e7e;
+        font-size: 1em;
 	
 }
 
 
 .s2 {
-	background: #313131;
+	background: #f3f3f3;
+        color: #7e7e7e;
 }
 .s2 a {
 	color: #fff;
 }
 
 .s3 {
-	background: #1b83b3;
+	background: #ffffff;
+        color: #7e7e7e;
 }
 
 
 .s4 {
-	background: #5aa3c4;
+	background: #f3f3f3;
+        color: #7e7e7e;
 }
 
 
 
 .s5 {
-	background: #bce1f1;
-	color: #3d3d3d;
+	background: #FFFFFF;
+	color: #7e7e7e;
 }
 
 .s6 {
-	background: #161616;
+        background: #ffffff;
+	color: #7e7e7e;
 }
 
+.title {
+    position: absolute;
+    color: #f0493e;
+    //border: 1px solid black;
+    font-size: 2em;
+    font-weight: 500;
+    top: 0;
+    left: 0;
+    max-width: 150px;
+    max-height: 150px;
+}
 
+.presentation {
+    //border: 1px solid black;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    text-align: center;
+    width: 500px;
+}
 
+.logo {
+    max-width: 100px;
+    max-height: 100px;
+}
 
+.subtitle { 
+    color: #f0493e;
+    //border: 1px solid black;
+    font-size: 1.25em;
+    font-weight: 600;
+}
 
+.text1{
+    color: #858585;
+    font-size: 1.5em;
+    font-weight: 100;
+    text-align: left;
+}
+
+.shop {
+    position: absolute;
+    //border: 1px solid black;
+    left: 0;
+}
+
+.im_1 {
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    //border: 1px solid black;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+h3 {
+    color: #5a5555;
+    font-size: 1.25em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.s1Top {
+    position: absolute;
+    top: 20px;
+    right: 15%;
+    left: 15%;
+    //border: 1px solid black;
+}
+
+.s1Middle {
+    position: absolute;
+    top: 110px;
+    left: 10%;
+    right: 0;
+    //border: 1px solid black;
+}
+
+.s1MR {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    //border: 1px solid black;
+    width: 60%;
+    text-align: center;
+}
+
+.s2ML {
+    position: absolute;
+    left: 5%;
+    top: 166px;
+    //border: 1px solid black;
+    max-width: 500px;
+}
+
+.s2img {
+    position: absolute;
+    right: 20px;
+    top: 60px;
+}
+
+.s3Middle {
+    position: absolute;
+    top: 30px;
+    left: 10%;
+    right: 0;
+    //border: 1px solid black;
+}
+
+.s3MR {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    //border: 1px solid black;
+    width: 60%;
+    text-align: center;
+}
+
+.s4img {
+    position: absolute;
+    right: 20px;
+    top: 60px;
+    -moz-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+
+h4 {
+    color: #FFFFFF;
+    font-size: 1.25em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.s51 {
+    width: 100%;
+    height: 150px;
+    background-image: url("image/red_pattern_background.png");   
+}
+
+.s5T {
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    right: 10%;
+}
+
+.s5M {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 100px;
+}
+
+.s52 {
+    position: absolute;
+    //border: 1px solid black;
+    text-align: center;
+    top: 25px;
+    left: 32%;
+    right: 32%;
+}
+
+h5 {
+    color: #7e7e7e;
+    font-size: 1.25em;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.s53 {
+    position: absolute;
+    height: 50px;
+    border-top: 3px solid #f3f3f3;
+    bottom:0;
+    width: 100%;
+    display: table;
+    z-index: 20;
+}
+
+.shops5 {
+    position: relative;
+    margin-top: 5px;
+}
