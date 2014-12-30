@@ -409,21 +409,21 @@ h5 {
 }
 
 #twitter {
-	background-image: url("pic/twitter.svg");
+	background-image: url("image/twitter.svg");
 	background-repeat: no-repeat;
 }
 
 #facebook {
-	background-image: url("pic/facebook.svg");
+	background-image: url("image/facebook.svg");
 	background-repeat: no-repeat;
 }
 
 #googleplus{
-	background-image: url("pic/googleplus.svg");
+	background-image: url("image/googleplus.svg");
 	background-repeat: no-repeat;
 }
 
 #email {
-	background-image: url("pic/email25.svg");
+	background-image: url("image/email.svg");
 	background-repeat: no-repeat;
 }
