@@ -352,14 +352,19 @@ h5 {
     margin-top: 5px;
 }
 
-.s53 {
+footer {
     position: absolute;
-    height: 50px;
+    padding: 20px;
     border-top: 3px solid #f3f3f3;
-    bottom:0;
     width: 100%;
-    display: table;
     z-index: 20;
+}
+
+footer p{
+    text-align: center;
+    color: #7e7e7e;
+    vertical-align: center; 
+    margin: 0;
 }
 
 .shops5 {
