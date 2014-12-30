@@ -366,3 +366,64 @@ h5 {
     position: relative;
     margin-top: 5px;
 }
+
+#socialicons{
+	width: 35%;
+	min-width: 200px;
+	margin: auto;
+	padding: 2%;
+}
+
+#socialicons a{
+	display: inline-block;
+	background-color: rgba(126,126,126,.5);
+	border-radius:50%;
+	width: 100%;
+	padding-top: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+	transition: all 0.2s ease-out;	
+}
+
+#socialicons a:hover{
+	background-color: #7e7e7e;
+}
+
+#socialicons a span{
+	display: none;
+}
+
+#socialicons ul{
+	list-style: none;
+	width: 100%;
+}
+
+#socialicons li{
+	display: inline-block;
+	width: 14%;
+	padding: 0% 4.5%;
+}
+
+#twitter {
+	background-image: url("pic/twitter.svg");
+	background-repeat: no-repeat;
+}
+
+#facebook {
+	background-image: url("pic/facebook.svg");
+	background-repeat: no-repeat;
+}
+
+#googleplus{
+	background-image: url("pic/googleplus.svg");
+	background-repeat: no-repeat;
+}
+
+#email {
+	background-image: url("pic/email25.svg");
+	background-repeat: no-repeat;
+}
