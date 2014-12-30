@@ -352,17 +352,83 @@ h5 {
     margin-top: 5px;
 }
 
-.s53 {
+footer {
     position: absolute;
-    height: 50px;
+    padding: 20px;
     border-top: 3px solid #f3f3f3;
-    bottom:0;
     width: 100%;
-    display: table;
     z-index: 20;
+}
+
+footer p{
+    text-align: center;
+    color: #7e7e7e;
+    vertical-align: center; 
+    margin: 0;
 }
 
 .shops5 {
     position: relative;
     margin-top: 5px;
+}
+
+#socialicons{
+	width: 35%;
+	min-width: 200px;
+	margin: auto;
+	padding: 2%;
+}
+
+#socialicons a{
+	display: inline-block;
+	background-color: rgba(126,126,126,.5);
+	border-radius:50%;
+	width: 100%;
+	padding-top: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+	transition: all 0.2s ease-out;	
+}
+
+#socialicons a:hover{
+	background-color: #7e7e7e;
+}
+
+#socialicons a span{
+	display: none;
+}
+
+#socialicons ul{
+	list-style: none;
+	width: 100%;
+}
+
+#socialicons li{
+	display: inline-block;
+	width: 14%;
+	padding: 0% 4.5%;
+}
+
+#twitter {
+	background-image: url("image/twitter.svg");
+	background-repeat: no-repeat;
+}
+
+#facebook {
+	background-image: url("image/facebook.svg");
+	background-repeat: no-repeat;
+}
+
+#googleplus{
+	background-image: url("image/googleplus.svg");
+	background-repeat: no-repeat;
+}
+
+#email {
+	background-image: url("image/email.svg");
+	background-repeat: no-repeat;
 }
