@@ -35,7 +35,10 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 			menuHeight = $(".smint").height(),
 			smint = $('.smint'),
         	smintA = $('.smint a'),
-        	myOffset = smint.height();
+        	myOffset = smint.height(),
+			firstbutton = smintA.first(),
+        	titleimage = $("#titlelogo");
+
 
       
 
@@ -59,7 +62,6 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 				$(this).attr('id', id);
 			}
 
-			
 			//Fill the menu
 			optionLocs.push(Array(
 				$(mySelector+"."+id).position().top-menuHeight, 
@@ -69,26 +71,47 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 			///////////////////////////////////
 
 			// get initial top offset for the menu 
-			var stickyTop = smint.offset().top;	
+			//var stickyTop = smint.offset().top;	
+			var stickyTop = $("#sTop").innerHeight();
 
 			// check position and make sticky if needed
 			var stickyMenu = function(direction){
 
 				// current distance top
 				var scrollTop = $(window).scrollTop()+myOffset; 
+				var windowHeight = $(window).height();
 
 				// if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
-				if (scrollTop > stickyTop+myOffset) { 
+				if(windowHeight < 600){
+					smint.css({'position': 'fixed', 'top':0,'left':0}).addClass('fxd');
+					$('body').css('padding-top', menuHeight);
+			
+					if(scrollTop > stickyTop+myOffset){
+						firstbutton.html('Home');
+						titleimage.show();
+					}else{
+						var firstbuttonwidth = firstbutton.width() + '';
+						firstbutton.html('<img src="pic/Kanshuwfont2b.png" width="' + firstbuttonwidth +'"/>');
+						titleimage.hide();
+					}
+				}else if (scrollTop > stickyTop+myOffset) { 
 					smint.css({ 'position': 'fixed', 'top':0,'left':0 }).addClass('fxd');
 
 					// add padding to the body to make up for the loss in heigt when the menu goes to a fixed position.
 					// When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
 					$('body').css('padding-top', menuHeight );	
+					firstbutton.html('Home');
+					titleimage.show();
+			
 				} else {
 					smint.css( 'position', 'relative').removeClass('fxd'); 
 					//remove the padding we added.
 					$('body').css('padding-top', '0' );	
+					firstbutton.html('Home');
+					titleimage.show();
+	
 				}   
+				
 
 				// Check if the position is inside then change the menu
 				// Courtesy of Ryan Clarke (@clarkieryan)
@@ -137,6 +160,10 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
    					smintA.last().removeClass('active')
    				}
 			});
+
+			$(window).resize(function() {
+				stickyMenu();
+			})
 
 			///////////////////////////////////////
         
