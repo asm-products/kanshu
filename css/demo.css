@@ -6,7 +6,7 @@ body {
 	color: #e5e5e5;
 	font-size: 12px;
 	background:#bfbfbf;
-        overflow: auto;
+    overflow: auto;
 	
 }
 
@@ -39,10 +39,10 @@ a {
 }
 
 
-
 .clear {
 	clear: both;
 }
+
 .wrap {
 	width: 100%;
 	max-width: 1600px;
@@ -53,7 +53,6 @@ a {
 	padding: 0;
 
 }
-
 
 
 .section {
@@ -67,7 +66,6 @@ a {
 	height: 500px;
 }
 
-
 .inner {
 	width: 960px;
 	margin: 0 auto;
@@ -80,28 +78,26 @@ a {
 }
 
 .inner:after {
-	  content: "";
-	  display: table;
-	  clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
-
 
 .subMenu {
 	height: 50px;
 	z-index: 1000;
 	width: 100%;
 	background: #FFFFFF;
-        color: #858585;
-        border: 1px solid #f3f3f3;
+    color: #858585;
+    border: 1px solid #f3f3f3;
         
 }
 
 .subMenu .inner {
 	padding:0;
 	margin: 0 auto;
-        font-weight: 600;
+    font-weight: 600;
 }
-
 
 .subNavBtn {
 	display: block;
@@ -114,15 +110,17 @@ a {
 	padding: 15px 2% 0 2%;
 	text-align: center;
 }
+
 .subMenu a:hover {
 	background: #e6473d;
-        color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .active {
 	background: #e6473d;
-        color: #ffffff;
+    color: #ffffff;
 }
+
 .end {
 	margin: 0;
 }
@@ -137,37 +135,35 @@ a {
 	color:#858585;
 	padding-top: 17px;
 	height: 550px;
-        background-image: url("image/pattern_background.png");
-	
+    background-image: url("image/white_pattern_background.png");
 }
 
 .s1 {
 	background:#FFFFFF;
 	color:#7e7e7e;
-        font-size: 1em;
-	
+    font-size: 1em;	
 }
 
 
 .s2 {
 	background: #f3f3f3;
-        color: #7e7e7e;
+    color: #7e7e7e;
 }
+
 .s2 a {
 	color: #fff;
 }
 
 .s3 {
 	background: #ffffff;
-        color: #7e7e7e;
+    color: #7e7e7e;
 }
 
 
 .s4 {
 	background: #f3f3f3;
-        color: #7e7e7e;
+    color: #7e7e7e;
 }
-
 
 
 .s5 {
@@ -176,7 +172,7 @@ a {
 }
 
 .s6 {
-        background: #ffffff;
+    background: #ffffff;
 	color: #7e7e7e;
 }
 
