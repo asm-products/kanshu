@@ -17,8 +17,19 @@
 $(document).ready( function() {
     $('.subMenu').smint({
     	'scrollSpeed' : 1000
-    });
+    });  
+
+$(function(){
+    $('.iphone-slideshow img:gt(0)').hide();
+    setInterval(function(){
+      $('.iphone-slideshow :first-child').fadeOut()
+        .next('img').fadeIn()
+        .end().appendTo('.iphone-slideshow');}, 
+    3000);
+});      
 });
+
+
 
 
 </script>
@@ -42,7 +53,15 @@ $(document).ready( function() {
                                 <a href="http://www.apple.com"><IMG SRC="pic/ituens_store.png" width="148.5" height="45.75" style="float: left; margin-left: 3px;"/></a>
                         </div>
                 </div>
-                <IMG SRC="pic/top-section-iphone-white.png" class="im_1"/>
+                <div class="im_1">
+                    <IMG SRC="pic/top-section-iphone-white-border.png" class="im_1"/>
+                    <div class="iphone-slideshow">
+                        <img src="pic/signup_screen.png" />
+                        <img src="pic/article_comments_screen.png" />
+                        <img src="pic/analytics_screen.png" />
+                        <img src="pic/article_screen.png" />
+                    </div>
+                </div>
             </div>
         </div>
 	<div class="subMenu" >

@@ -239,6 +239,16 @@ a {
     max-height: 600px;
 }
 
+.iphone-slideshow{
+    position: absolute;
+    right: 23px;
+    top: 125px;
+    width: 295px;
+}
+
+.iphone-slideshow img{
+    width: 100%;
+}
 h3 {
     color: #5a5555;
     font-size: 1.25em;
