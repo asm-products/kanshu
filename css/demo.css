@@ -249,11 +249,13 @@ a {
 .iphone-slideshow img{
     width: 100%;
 }
+
 h3 {
     color: #5a5555;
     font-size: 1.25em;
     font-weight: 600;
     text-align: center;
+    margin-bottom: 5px;
 }
 
 .s1Top {
@@ -281,12 +283,24 @@ h3 {
     text-align: center;
 }
 
+.s1MR p{
+    width: 80%;
+    margin-top: 8px;
+    text-align: left;
+}
+
 .s2ML {
     position: absolute;
     left: 5%;
     top: 166px;
     //border: 1px solid black;
     max-width: 500px;
+}
+
+.s2ML p{
+    width: 80%;
+    margin-top: 8px;
+    text-align: left;   
 }
 
 .s2img {
@@ -310,6 +324,12 @@ h3 {
     //border: 1px solid black;
     width: 60%;
     text-align: center;
+}
+
+.s3MR p{
+    width: 80%;
+    margin-top: 8px;
+    text-align: left;
 }
 
 .s4img {
