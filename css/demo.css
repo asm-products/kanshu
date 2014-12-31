@@ -1,8 +1,11 @@
 * {margin: 0; padding: 0; outline: 0;}
 
+article, aside, figcaption, figure, footer, header, main, nav, section, div{
+    display: block;
+}
 
 body {
-	font-family: Helvetica, Arial, Verdana, sans-serif;
+	font-family: 'Raleway', Helvetica, Arial, Verdana, sans-serif;
 	color: #e5e5e5;
 	font-size: 12px;
 	background:#bfbfbf;
@@ -12,7 +15,7 @@ body {
 
 
 h1, h2 {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-weight: 300;
 	margin:0 0 15px 0;
 }
@@ -73,7 +76,7 @@ a {
 	min-height: 50px;
 	//padding:30px 0;
 	font-size: 18px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-weight: 300;
 }
 
@@ -136,6 +139,11 @@ a {
 	padding-top: 17px;
 	height: 550px;
     background-image: url("image/white_pattern_background.png");
+}
+
+.sTop p{
+    text-align: left;
+    margin-top: 1em;
 }
 
 .s1 {
@@ -311,33 +319,71 @@ h4 {
     text-align: center;
 }
 
+.s5{
+    height: auto;
+}
+
 .s51 {
     width: 100%;
-    height: 150px;
     background-image: url("image/red_pattern_background.png");   
 }
 
 .s5T {
-    position: absolute;
-    top: 20px;
-    left: 10%;
-    right: 10%;
+    padding:20px 25%;
 }
 
 .s5M {
+    padding:30px 10%;
+}
+
+.s5M p{
+    margin-top: 10px;
+    color: #FFFFFF;
+}
+
+.s5M ul{
+    list-style: none;
+    width: 100%;
+}
+
+.s5M li{
+    display: inline-block;
+    vertical-align: top;
+    width: 13%;
+    padding: 0% 3%;
+}
+
+.s5M .box{
+    width: 100%;
+    position: relative;
+}
+
+.s5M .box:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.s5M .content{
     position: absolute;
-    left: 10%;
-    right: 10%;
-    top: 100px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.s5M img{
+    width: 100%;
+    height: 100%;
+    background-color: #EEEEEE;
+    border-radius: 50%;
 }
 
 .s52 {
-    position: absolute;
-    //border: 1px solid black;
+    width: 80%;
+    margin: auto;
     text-align: center;
-    top: 25px;
-    left: 32%;
-    right: 32%;
+    padding-top: 30px;
 }
 
 h5 {
@@ -345,11 +391,10 @@ h5 {
     font-size: 1.25em;
     font-weight: 600;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 footer {
-    position: absolute;
     padding: 20px;
     border-top: 3px solid #f3f3f3;
     width: 100%;
@@ -372,7 +417,7 @@ footer p{
 	width: 35%;
 	min-width: 200px;
 	margin: auto;
-	padding: 2%;
+	padding: 1%;
 }
 
 #socialicons a{
