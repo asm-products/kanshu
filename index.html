@@ -2,15 +2,94 @@
 <html lang="zh">
 <head>
 	<meta charset="utf-8">
-	<script type="text/javascript" src="sample_processed_article.js"></script>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="sample_processed_article2.js"></script>
+	
+	<style>
+		p {
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+
+		.phrase{
+			display: inline-block;
+			padding: 5px 4px;
+		}
+		
+		.punc{
+			display: inline-block;
+			padding: 5px 0px;
+		}
+
+		.phrase span p{
+			color: inherit;
+		}
+
+		#translation{
+			position: absolute;
+			background-color: #444444;
+			color: white;
+			padding: 2px;
+			max-width: 316px;
+		}
+
+		#hsk{
+			background-color: #ffffff;
+			position: fixed;
+			top: 10px;
+			left: 30px;
+			width: 170px;
+			height: 50px;	
+			font-size: 28pt;	
+			text-align: center;	
+		}
+
+		#slider{
+			background-color: #000000;
+			position: fixed;
+			top: 80px;
+			left: 30px;
+			width: 170px;
+			height: 50px;
+		}
+
+		#bar{
+			position: relative;
+			top: 25px;
+			width: 170px;
+			height: 2px;
+			background-color: #ffffff;
+		}
+		
+		#knob {
+            position: relative;
+            left: 0;
+            background-color: #c0c0c0;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            text-align: center;
+        }
+
+        #knob p {
+        	padding: 10px;
+        }
+	</style>
 	
 </head>
 
-<body style="background-color:#000000">
-	<div style="width:320px; margin:auto">
-		<canvas id="canvas" width="320" height="6000" style="border:1px solid #ffffff; background-color:#ffffff">
-		</canvas>
+<body style="background-color:#000000" onload='main()'>
+	<div id="hsk">
 	</div>
-	<script type="text/javascript" src="chinese_canvas.js"></script>
+	<div id="slider">
+		<div id="bar">
+		</div>
+		<div id="knob">
+		</div>
+	</div>
+	<div id="centered" style="width:320px; margin:auto; background-color:white">
+	</div>
+	<script type="text/javascript" src="chinese_typesetting.js"></script>	
 </body>
 </html>
