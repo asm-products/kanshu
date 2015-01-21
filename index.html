@@ -34,35 +34,39 @@
 			max-width: 316px;
 		}
 
-		#hsk{
+		#toolbar{
 			background-color: #ffffff;
 			position: fixed;
 			top: 10px;
-			left: 30px;
-			width: 170px;
-			height: 50px;	
+			left: 10px;
+			width: 400px;
+			height: 400px;	
 			font-size: 28pt;	
 			text-align: center;	
 		}
 
-		#slider{
-			background-color: #000000;
+		#hsk{
+			padding: 10px;
+		}
+
+		.slider{
+			background-color: #ffffff;
 			position: fixed;
 			top: 80px;
-			left: 30px;
+			left: 140px;
 			width: 170px;
 			height: 50px;
 		}
 
-		#bar{
+		.bar{
 			position: relative;
 			top: 25px;
 			width: 170px;
 			height: 2px;
-			background-color: #ffffff;
+			background-color: #000000;
 		}
 		
-		#knob {
+		.knob {
             position: relative;
             left: 0;
             background-color: #c0c0c0;
@@ -70,24 +74,89 @@
             height: 50px;
             border-radius: 25px;
             text-align: center;
+            font-size: 24px
         }
 
-        #knob p {
+        .knob p {
         	padding: 10px;
         }
+
+        .min {
+        	position: fixed;
+        	top: 80px;
+        	left: 10px;
+        	width: 120px;
+        	height: 50px;
+        	background-color: #ffffff;
+        	font-size: 20pt;
+        }
+
+        .max {
+        	position: fixed;
+        	top: 80px;
+        	left: 320px;
+        	width: 40px;
+        	height: 50px;
+        	background-color: #ffffff;
+        	font-size: 20pt;
+        }
+
+        .min p, .max p {
+        	padding: 12px 6px;
+        	text-align: justify;
+        }
+
+        .min p:after{
+		    content: "";
+		    display: inline-block;
+		    width: 100%;    
+		}
+
 	</style>
 	
 </head>
 
 <body style="background-color:#000000" onload='main()'>
-	<div id="hsk">
+	<div id="toolbar">
+		<p id="hsk"> </p>
+	
+	<div class="min">
+		<p>hsk 0</p>
 	</div>
-	<div id="slider">
-		<div id="bar">
+	<div class="slider" id="mainSlider">
+		<div class="bar">
 		</div>
-		<div id="knob">
+		<div class="knob">
 		</div>
 	</div>
+	<div class="max">
+		<p>7</p>
+	</div>
+	<div class="min" style="top: 150px">
+		<p>pinyin 6</p>
+	</div>
+	<div class="slider" id="pinyinFontsize" style="top: 150px">
+		<div class="bar">
+		</div>
+		<div class="knob">
+		</div>
+	</div>
+	<div class="max" style="top: 150px">
+		<p>18</p>
+	</div>	
+	<div class="min" style="top: 220px">
+		<p>hanzi 10</p>
+	</div>	
+	<div class="slider" id="hanziFontsize" style="top: 220px">
+		<div class="bar">
+		</div>
+		<div class="knob">
+		</div>
+	</div>
+	<div class="max" style="top: 220px">
+		<p>30</p>
+	</div>	
+	</div>	
 	<div id="centered" style="width:320px; margin:auto; background-color:white">
 	</div>
 	<script type="text/javascript" src="chinese_typesetting.js"></script>	

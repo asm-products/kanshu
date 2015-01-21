@@ -84,7 +84,7 @@ function phraseMouseleave(divLeft){
 
 function addPhrase(pinyin, hanzi, punc, index){
 	if(punc == false){
-		var divAdded = $("<div class='phrase' id='phrase" + index + "'><span style='font-size:12pt'><p>" + pinyin + "</p></span><p style='font-size: 18pt'>" + hanzi + "</p></div>").appendTo("#centered");
+		var divAdded = $("<div class='phrase' id='phrase" + index + "'><span style='font-size:" + pinyinFontsize + "pt'><p>" + pinyin + "</p></span><p style='font-size: " + hanziFontsize + "pt'>" + hanzi + "</p></div>").appendTo("#centered");
 		divAdded.hover(function(){
 			phraseMouseenter(this, index);
 		}, function(){
@@ -92,110 +92,145 @@ function addPhrase(pinyin, hanzi, punc, index){
 		});
 		divAdded.addClass("hsk" + chineseText.hsks[index])
 	}else{
-		$("<div class='punc' id='phrase" + index + "'><span style='font-size:12pt'><p>" + pinyin + "</p></span><p style='font-size: 18pt'>" + hanzi + "</p></div>").appendTo("#centered");
+		$("<div class='punc' id='phrase" + index + "'><span style='font-size:" + pinyinFontsize + "pt'><p>" + pinyin + "</p></span><p style='font-size:" + hanziFontsize + "pt'>" + hanzi + "</p></div>").appendTo("#centered");
 	}
 }
 
-function setKnob(x) {
-	var knobX = x - knobMid;
-    knobX = Math.max(knobX, 0);
-    knobX = Math.min(knobX, $("#slider").outerWidth() - $("#knob").outerWidth());
-    $("#knob").css('left',knobX);
-
-    var sliderLevel = Math.floor(knobX/sliderStep);
-    $("#knob").html("<p>" + sliderLevel + "</p>");
+function mainSliderAction(sliderLevel){
     switch(sliderLevel){
-    	case 0:
-    		$(".hsk1 span").css('color','#000000');
-     		$(".hsk2 span").css('color','#000000');
-     		$(".hsk3 span").css('color','#000000');
-     		$(".hsk4 span").css('color','#000000');
-     		$(".hsk5 span").css('color','#000000');
-     		$(".hsk6 span").css('color','#000000');
-     		$(".hsk7 span").css('color','#000000');   		
-    		break;
-    	case 1:
-    		$(".hsk1 span").css('color','#ffffff');
-     		$(".hsk2 span").css('color','#000000');
-     		$(".hsk3 span").css('color','#000000');
-     		$(".hsk4 span").css('color','#000000');
-     		$(".hsk5 span").css('color','#000000');
-     		$(".hsk6 span").css('color','#000000');
-     		$(".hsk7 span").css('color','#000000');       	
-    		break;
-    	case 2:
-    		$(".hsk1 span").css('color','#ffffff');
-     		$(".hsk2 span").css('color','#ffffff');
-     		$(".hsk3 span").css('color','#000000');
-     		$(".hsk4 span").css('color','#000000');
-     		$(".hsk5 span").css('color','#000000');
-     		$(".hsk6 span").css('color','#000000');
-     		$(".hsk7 span").css('color','#000000');   
-     		break;    	
-    	case 3:
-    		$(".hsk1 span").css('color','#ffffff');
-     		$(".hsk2 span").css('color','#ffffff');
-     		$(".hsk3 span").css('color','#ffffff');
-     		$(".hsk4 span").css('color','#000000');
-     		$(".hsk5 span").css('color','#000000');
-     		$(".hsk6 span").css('color','#000000');
-     		$(".hsk7 span").css('color','#000000');   		
-    		break;
-    	case 4:
-    		$(".hsk1 span").css('color','#ffffff');
-     		$(".hsk2 span").css('color','#ffffff');
-     		$(".hsk3 span").css('color','#ffffff');
-     		$(".hsk4 span").css('color','#ffffff');
-     		$(".hsk5 span").css('color','#000000');
-     		$(".hsk6 span").css('color','#000000');
-     		$(".hsk7 span").css('color','#000000');       	
-    		break;
-    	case 5:
-    		$(".hsk1 span").css('color','#ffffff');
-     		$(".hsk2 span").css('color','#ffffff');
-     		$(".hsk3 span").css('color','#ffffff');
-     		$(".hsk4 span").css('color','#ffffff');
-     		$(".hsk5 span").css('color','#ffffff');
-     		$(".hsk6 span").css('color','#000000');
-     		$(".hsk7 span").css('color','#000000');   
-     		break;
-    	case 6:
-    		$(".hsk1 span").css('color','#ffffff');
-     		$(".hsk2 span").css('color','#ffffff');
-     		$(".hsk3 span").css('color','#ffffff');
-     		$(".hsk4 span").css('color','#ffffff');
-     		$(".hsk5 span").css('color','#ffffff');
-     		$(".hsk6 span").css('color','#ffffff');
-     		$(".hsk7 span").css('color','#000000');   
-     		break;  
-    	case 7:
-    		$(".hsk1 span").css('color','#ffffff');
-     		$(".hsk2 span").css('color','#ffffff');
-     		$(".hsk3 span").css('color','#ffffff');
-     		$(".hsk4 span").css('color','#ffffff');
-     		$(".hsk5 span").css('color','#ffffff');
-     		$(".hsk6 span").css('color','#ffffff');
-     		$(".hsk7 span").css('color','#ffffff');   
-     		break;      		   		
+        case 0:
+            $(".hsk1 span").css('color','#000000');
+            $(".hsk2 span").css('color','#000000');
+            $(".hsk3 span").css('color','#000000');
+            $(".hsk4 span").css('color','#000000');
+            $(".hsk5 span").css('color','#000000');
+            $(".hsk6 span").css('color','#000000');
+            $(".hsk7 span").css('color','#000000');         
+            break;
+        case 1:
+            $(".hsk1 span").css('color','#ffffff');
+            $(".hsk2 span").css('color','#000000');
+            $(".hsk3 span").css('color','#000000');
+            $(".hsk4 span").css('color','#000000');
+            $(".hsk5 span").css('color','#000000');
+            $(".hsk6 span").css('color','#000000');
+            $(".hsk7 span").css('color','#000000');         
+            break;
+        case 2:
+            $(".hsk1 span").css('color','#ffffff');
+            $(".hsk2 span").css('color','#ffffff');
+            $(".hsk3 span").css('color','#000000');
+            $(".hsk4 span").css('color','#000000');
+            $(".hsk5 span").css('color','#000000');
+            $(".hsk6 span").css('color','#000000');
+            $(".hsk7 span").css('color','#000000');   
+            break;      
+        case 3:
+            $(".hsk1 span").css('color','#ffffff');
+            $(".hsk2 span").css('color','#ffffff');
+            $(".hsk3 span").css('color','#ffffff');
+            $(".hsk4 span").css('color','#000000');
+            $(".hsk5 span").css('color','#000000');
+            $(".hsk6 span").css('color','#000000');
+            $(".hsk7 span").css('color','#000000');         
+            break;
+        case 4:
+            $(".hsk1 span").css('color','#ffffff');
+            $(".hsk2 span").css('color','#ffffff');
+            $(".hsk3 span").css('color','#ffffff');
+            $(".hsk4 span").css('color','#ffffff');
+            $(".hsk5 span").css('color','#000000');
+            $(".hsk6 span").css('color','#000000');
+            $(".hsk7 span").css('color','#000000');         
+            break;
+        case 5:
+            $(".hsk1 span").css('color','#ffffff');
+            $(".hsk2 span").css('color','#ffffff');
+            $(".hsk3 span").css('color','#ffffff');
+            $(".hsk4 span").css('color','#ffffff');
+            $(".hsk5 span").css('color','#ffffff');
+            $(".hsk6 span").css('color','#000000');
+            $(".hsk7 span").css('color','#000000');   
+            break;
+        case 6:
+            $(".hsk1 span").css('color','#ffffff');
+            $(".hsk2 span").css('color','#ffffff');
+            $(".hsk3 span").css('color','#ffffff');
+            $(".hsk4 span").css('color','#ffffff');
+            $(".hsk5 span").css('color','#ffffff');
+            $(".hsk6 span").css('color','#ffffff');
+            $(".hsk7 span").css('color','#000000');   
+            break;  
+        case 7:
+            $(".hsk1 span").css('color','#ffffff');
+            $(".hsk2 span").css('color','#ffffff');
+            $(".hsk3 span").css('color','#ffffff');
+            $(".hsk4 span").css('color','#ffffff');
+            $(".hsk5 span").css('color','#ffffff');
+            $(".hsk6 span").css('color','#ffffff');
+            $(".hsk7 span").css('color','#ffffff');   
+            break;                      
     }
 }
 
-function mouseXY(e){
+function changePinyinFontsize(fontsize){
+    pinyinFontsize = fontsize
+    $(".phrase > span > p").css('font-size', fontsize + 'pt')
+    chineseText = addPinyinWidths(chineseText, fontsize);
+}
+
+function changeHanziFontsize(fontsize){
+    hanziFontsize = fontsize
+    $(".phrase > p").css('font-size', fontsize + 'pt')
+    $(".punc > p").css('font-size', fontsize + 'pt')
+    chineseText = addHanziWidths(chineseText, fontsize);
+}
+
+
+function setKnob(slider, x) {
+	var knobX = x - knobMid;
+    knobX = Math.max(knobX, 0);
+    knobX = Math.min(knobX, $(slider).outerWidth() - $(slider).children().filter(".knob").outerWidth());
+    $(slider).children().filter(".knob").css('left',knobX);
+
+    switch($(slider).attr('id')){
+        case 'mainSlider':
+            var sliderLevel = Math.floor(knobX/sliderStep);
+            mainSliderAction(sliderLevel);
+            break;
+        case 'pinyinFontsize':
+            //between 6 and 18pt 
+            var sliderLevel = Math.floor(knobX/10) + 6;
+            changePinyinFontsize(sliderLevel);
+            break;       
+        case 'hanziFontsize':
+            //between 10 and 30
+            var sliderLevel = 2 * (Math.floor(knobX/12) + 5);
+            changeHanziFontsize(sliderLevel);
+            break;
+    }
+    $(slider).children().filter(".knob").html("<p>" + sliderLevel + "</p>");
+}
+
+function mouseXY(slider, e){
 	e.preventDefault();
 	if(mouseIsDown){
         if (!e)
            	var e = event;
-        var mouseX = e.pageX - $("#slider").offset().left;
-       	if (mouseX >= 0 && mouseX <= $("#slider").outerWidth() ) {
-            setKnob(mouseX);
+        var mouseX = e.pageX - $(slider).offset().left;
+       	if (mouseX >= 0 && mouseX <= $(slider).outerWidth() ) {
+            setKnob(slider, mouseX);
        	}
     }
 }
 
 function main(){
+    hanziFontsize = 24;
+    pinyinFontsize = 10;
+
 	chineseText = getChineseText(article2);
-	chineseText = addHanziWidths(chineseText, "18pt");
-	chineseText = addPinyinWidths(chineseText, "12pt");
+	chineseText = addHanziWidths(chineseText, hanziFontsize + "pt");
+	chineseText = addPinyinWidths(chineseText, pinyinFontsize + "pt");
 	mouseIsDown = false;
 
 	for(var i = 0; i < chineseText.pinyins.length; i++){
@@ -204,19 +239,24 @@ function main(){
 
 	$("<div id='translation'></div>").appendTo("#centered");
 
-	knobMid = $("#knob").outerWidth()/2.0;
+	knobMid = $(".knob").outerWidth()/2.0;
 
-	$("#slider").mousedown(function(e){
+	$(".slider").mousedown(function(e){
 		mouseIsDown = true;
-		console.log(e);
-		mouseXY(e);
+		mouseXY(this, e);
 	})
-	$("#slider").mousemove(function(e){
-		mouseXY(e);
+	$(".slider").mousemove(function(e){
+		mouseXY(this, e);
 	});
 
-	sliderWidth = $("#slider").outerWidth() - $("#knob").outerWidth();
+	sliderWidth = $(".slider").outerWidth() - $(".knob").outerWidth();
 	sliderStep = sliderWidth/7;
+
+    $("#mainSlider").children().filter(".knob").html("<p> 0 </p>")
+    $("#pinyinFontsize").children().filter(".knob").html("<p>" + pinyinFontsize + "</p>")
+    $("#pinyinFontsize").children().filter(".knob").css('left', (pinyinFontsize - 6) * 10 + 2);
+    $("#hanziFontsize").children().filter(".knob").html("<p>" + hanziFontsize + "</p>")
+    $("#hanziFontsize").children().filter(".knob").css('left', (hanziFontsize - 10) * 6);
 
 	$("body").mouseup(function(){
 		mouseIsDown = false;
