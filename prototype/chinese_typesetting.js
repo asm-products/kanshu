@@ -65,20 +65,42 @@ function addHanziWidths(chineseText, font){
 }
 
 function phraseMouseenter(divEntered, index){
+    //get definition and measure height
 	var definitions = chineseText.definitions[index];
-	console.log($(divEntered).position().top)
-	var top = $(divEntered).position().top + 50;
-	var left = $(divEntered).position().left;
 	$("#hsk").html(chineseText.hsks[index])
 	$("#translation").html(definitions);
-	$("#translation").css('display', 'block');
-	$("#translation").css('top', top);
+    $("#translation").css('display', 'block');
+    var translationHeight = $("#translation").outerHeight();
+    
+    //set pop-up top to position it above selected phrase
+    var top = $(divEntered).position().top - translationHeight;
+    $("#translation").css('top', top - 8);
+
+    //set pop-up left with constraints to keep it within the screen
+    var left = Math.max($("#centered").offset().left, $(divEntered).position().left - $("#translation").outerWidth()/2 + $(divEntered).outerWidth()/2);
+    var rightOverhang = left + $("#translation").outerWidth() - (($("#centered").offset().left + 320));
+    if(rightOverhang > 0){
+        left -= rightOverhang;
+    }
+
+    //position speech bubble point
+    var triangleLeft = Math.max($("#centered").offset().left + 10, $(divEntered).position().left + $(divEntered).outerWidth()/2 - 20);    
 	$("#translation").css('left', left);
-	$(divEntered).children().children().css('color','#000000');
+    $("#translationTriangle1").css('left', triangleLeft);
+    $("#translationTriangle2").css('left', triangleLeft + 15);
+    $("#translationTriangle1").css('top', top + translationHeight - 8);
+    $("#translationTriangle2").css('top', top + translationHeight - 8);
+    $("#translationTriangle1").css('display', 'block');
+    $("#translationTriangle2").css('display', 'block');
+   
+    //show pinyin if hidden
+    $(divEntered).children().children().css('color','#000000');
 }
 
 function phraseMouseleave(divLeft){
 	$("#translation").css('display', 'none');
+    $("#translationTriangle1").css('display', 'none');
+    $("#translationTriangle2").css('display', 'none');    
 	$(divLeft).children().children().css('color','inherit');
 }
 
@@ -237,12 +259,11 @@ function main(){
 		addPhrase(chineseText.pinyins[i], chineseText.hanzis[i], chineseText.punc[i], i);
 	}
 
-	$("<div id='translation'></div>").appendTo("#centered");
-
 	knobMid = $(".knob").outerWidth()/2.0;
 
 	$(".slider").mousedown(function(e){
-		mouseIsDown = true;
+		e.preventDefault();
+        mouseIsDown = true;
 		mouseXY(this, e);
 	})
 	$(".slider").mousemove(function(e){

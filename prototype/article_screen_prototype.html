@@ -28,10 +28,42 @@
 
 		#translation{
 			position: absolute;
-			background-color: #444444;
+			background-color: #d4554b;
 			color: white;
-			padding: 2px;
-			max-width: 316px;
+			padding: 10px;
+			max-width: 300px; /* 320 minus 2 * padding */
+			border-radius: 5px;
+			display: none;
+		}
+
+		#translationTriangle1 {
+		  	content: "";
+		  	position: absolute;
+		  	bottom: -12px; /* value = - border-top-width - border-bottom-width */
+		  	left: 0px;
+		  	border: 0;
+		  	border-right-width: 20px; /* vary this value to change the angle of the vertex */
+		  	border-bottom-width: 12px; /* triangle height */
+		  	height: 0px; 
+		  	border-style: solid;
+		  	border-color: transparent #d4554b;
+		  	width: 0;
+		  	display: none;
+		}
+
+		#translationTriangle2 {
+			content: "";
+			position: absolute;
+			bottom: -12px; /* value = - border-top-width - border-bottom-width */
+			left: 0px;
+			border: 0;
+			border-bottom-width: 12px; /* triangle height */
+			border-right-width: 5px; /* vary this value to change the angle of the vertex */
+			height: 0px; 
+			border-style: solid;
+			border-color: transparent #ffffff;
+			width: 0;
+			display: none;
 		}
 
 		#toolbar{
@@ -106,6 +138,7 @@
         	text-align: justify;
         }
 
+        /* to justify one line */
         .min p:after{
 		    content: "";
 		    display: inline-block;
@@ -158,6 +191,10 @@
 	</div>	
 	</div>	
 	<div id="centered" style="width:320px; margin:auto; background-color:white">
+		<div id='translation'></div>
+		<div id="translationTriangle1"></div>
+		<div id="translationTriangle2"></div>
+
 	</div>
 	<script type="text/javascript" src="chinese_typesetting.js"></script>	
 </body>
