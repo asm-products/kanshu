@@ -103,9 +103,9 @@ function phraseMouseleave(divLeft){
 	$(divLeft).children().children().css('color','inherit');
 }
 
-function addPhrase(pinyin, hanzi, punc, index){
+function addPhrase(pinyin, hanzi, definition, punc, index){
 	if(punc == false){
-		var divAdded = $("<div class='phrase' id='phrase" + index + "'><span style='font-size:" + pinyinFontsize + "pt'><p>" + pinyin + "</p></span><p style='font-size: " + hanziFontsize + "pt'>" + hanzi + "</p></div>").appendTo("#centered");
+		var divAdded = $("<div class='phrase' id='phrase" + index + "'><span><p class='inlineDefinition'>" + definition + "</p></span><span style='font-size:" + pinyinFontsize + "pt'><p>" + pinyin + "</p></span><p class='hanzi' style='font-size: " + hanziFontsize + "pt'>" + hanzi + "</p></div>").appendTo("#centered");
 		divAdded.hover(function(){
 			phraseMouseenter(this, index);
 		}, function(){
@@ -113,7 +113,7 @@ function addPhrase(pinyin, hanzi, punc, index){
 		});
 		divAdded.addClass("hsk" + chineseText.hsks[index])
 	}else{
-		$("<div class='punc' id='phrase" + index + "'><span style='font-size:" + pinyinFontsize + "pt'><p>" + pinyin + "</p></span><p style='font-size:" + hanziFontsize + "pt'>" + hanzi + "</p></div>").appendTo("#centered");
+		$("<div class='punc' id='phrase" + index + "'><span style='font-size:" + pinyinFontsize + "pt'><p>" + pinyin + "</p></span><p class='hanzi' style='font-size:" + hanziFontsize + "pt'>" + hanzi + "</p></div>").appendTo("#centered");
 	}
 }
 
@@ -198,6 +198,7 @@ function changePinyinFontsize(fontsize){
     pinyinFontsize = fontsize
     $(".phrase > span > p").css('font-size', fontsize + 'pt')
     chineseText = addPinyinWidths(chineseText, fontsize);
+    clipDefinitions()
 }
 
 function changeHanziFontsize(fontsize){
@@ -205,11 +206,18 @@ function changeHanziFontsize(fontsize){
     $(".phrase > p").css('font-size', fontsize + 'pt')
     $(".punc > p").css('font-size', fontsize + 'pt')
     chineseText = addHanziWidths(chineseText, fontsize);
+    clipDefinitions()
 }
 
 function changeSpacing(spacing){
     $(".phrase").css('padding-left', spacing + 'px')
     $(".phrase").css('padding-right', spacing + 'px')  
+}
+
+function clipDefinitions(){
+    $(".inlineDefinition").each(function(){
+        $(this).css('max-width', 6 * getTextWidth($(this).parent().parent().children().filter('.hanzi').text(), hanziFontsize + 'pt') + 'px');
+    })    
 }
 
 function setKnob(slider, x) {
@@ -264,7 +272,7 @@ function main(){
 	mouseIsDown = false;
 
 	for(var i = 0; i < chineseText.pinyins.length; i++){
-		addPhrase(chineseText.pinyins[i], chineseText.hanzis[i], chineseText.punc[i], i);
+		addPhrase(chineseText.pinyins[i], chineseText.hanzis[i], chineseText.definition[i], chineseText.punc[i], i);
 	}
 
     changeHanziFontsize(hanziFontsize)
@@ -300,12 +308,16 @@ function main(){
 		mouseIsDown = false;
 	})
 
+    fontFamilies = ['Helvetica, Arial, "Times New Roman", "FangSong", "仿宋", STFangSong, "华文仿宋", serif', 'Arial, Helvetica, tahoma, verdana, 宋体, SimSun, 华文细黑, STXihei, sans-serif','Arial, Helvetica, "KaiTi", "楷体", STKaiti, "华文楷体", serif']
+    currentFamily = 0; 
     $("#fontButton").click(function(e){
         cycleFonts();
     })
 
-    fontFamilies = ['Helvetica, Arial, "Times New Roman", "FangSong", "仿宋", STFangSong, "华文仿宋", serif', 'Arial, Helvetica, tahoma, verdana, 宋体, SimSun, 华文细黑, STXihei, sans-serif','Arial, Helvetica, "KaiTi", "楷体", STKaiti, "华文楷体", serif']
-    currentFamily = 0; 
+    $("#inlineDefinitionButton").click(function(e){
+        $(".inlineDefinition").toggle();
+    });
+
 }
 
 function cycleFonts(){

@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="sample_processed_article2.js"></script>
-	
+	<script type="text/javascript" src="sample_processed_article2_reversed_dictionary.js"></script>	
 	<style>
 		p {
 			margin: 0;
@@ -30,6 +30,14 @@
 
 		.phrase span p{
 			color: inherit;
+		}
+
+		.inlineDefinition {
+			color: #444444;
+			text-wrap: none;
+			text-overflow: ellipsis;
+  			white-space: nowrap;
+  			overflow: hidden;			
 		}
 
 		#translation{
@@ -213,6 +221,7 @@
 			<p>10</p>
 		</div>			
 		<div class="buttons" style="top: 310px">
+			<button type="button" id="inlineDefinitionButton">Toggle inline definition</button><br />
 			<button type="button" id="fontButton">Cycle fonts</button>
 			<p id="currentFontfamily"> </p>
 		</div>
