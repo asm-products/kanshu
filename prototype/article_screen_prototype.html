@@ -12,14 +12,20 @@
 			text-align: center;
 		}
 
+		#centered{
+			padding: 0px 4px;
+		}
+
 		.phrase{
 			display: inline-block;
-			padding: 5px 4px;
+			padding: 4px 0px;
+			font-family: Helvetica, Arial, "Times New Roman", "FangSong", "仿宋", STFangSong, "华文仿宋", serif;				
 		}
 		
 		.punc{
 			display: inline-block;
 			padding: 5px 0px;
+			font-family: Helvetica, Arial, "FangSong", "仿宋", STFangSong, "华文仿宋", serif;			
 		}
 
 		.phrase span p{
@@ -73,7 +79,7 @@
 			left: 10px;
 			width: 400px;
 			height: 400px;	
-			font-size: 28pt;	
+			font-size: 24pt;	
 			text-align: center;	
 		}
 
@@ -84,7 +90,7 @@
 		.slider{
 			background-color: #ffffff;
 			position: fixed;
-			top: 80px;
+			top: 30px;
 			left: 140px;
 			width: 170px;
 			height: 50px;
@@ -115,22 +121,22 @@
 
         .min {
         	position: fixed;
-        	top: 80px;
+        	top: 30px;
         	left: 10px;
         	width: 120px;
         	height: 50px;
         	background-color: #ffffff;
-        	font-size: 20pt;
+        	font-size: 16pt;
         }
 
         .max {
         	position: fixed;
-        	top: 80px;
+        	top: 30px;
         	left: 320px;
         	width: 40px;
         	height: 50px;
         	background-color: #ffffff;
-        	font-size: 20pt;
+        	font-size: 16pt;
         }
 
         .min p, .max p {
@@ -145,52 +151,73 @@
 		    width: 100%;    
 		}
 
+		.buttons {
+			position: fixed;
+			left: 10px;
+			width: 380px;
+			font-size: medium;
+		}
+
 	</style>
 	
 </head>
 
 <body style="background-color:#000000" onload='main()'>
 	<div id="toolbar">
-		<p id="hsk"> </p>
-	
-	<div class="min">
-		<p>hsk 0</p>
-	</div>
-	<div class="slider" id="mainSlider">
-		<div class="bar">
+		<div class="min">
+			<p>hsk 0</p>
 		</div>
-		<div class="knob">
+		<div class="slider" id="mainSlider">
+			<div class="bar">
+			</div>
+			<div class="knob">
+			</div>
 		</div>
-	</div>
-	<div class="max">
-		<p>7</p>
-	</div>
-	<div class="min" style="top: 150px">
-		<p>pinyin 6</p>
-	</div>
-	<div class="slider" id="pinyinFontsize" style="top: 150px">
-		<div class="bar">
+		<div class="max">
+			<p>7</p>
 		</div>
-		<div class="knob">
+		<div class="min" style="top: 100px">
+			<p>pinyin 6</p>
 		</div>
-	</div>
-	<div class="max" style="top: 150px">
-		<p>18</p>
+		<div class="slider" id="pinyinFontsize" style="top: 100px">
+			<div class="bar">
+			</div>
+			<div class="knob">
+			</div>
+		</div>
+		<div class="max" style="top: 100px">
+			<p>18</p>
+		</div>	
+		<div class="min" style="top: 170px">
+			<p>hanzi 10</p>
+		</div>	
+		<div class="slider" id="hanziFontsize" style="top: 170px">
+			<div class="bar">
+			</div>
+			<div class="knob">
+			</div>
+		</div>
+		<div class="max" style="top: 170px">
+			<p>30</p>
+		</div>	
+		<div class="min" style="top: 240px">
+			<p>spacing 0</p>
+		</div>	
+		<div class="slider" id="spacing" style="top: 240px">
+			<div class="bar">
+			</div>
+			<div class="knob">
+			</div>
+		</div>
+		<div class="max" style="top: 240px">
+			<p>10</p>
+		</div>			
+		<div class="buttons" style="top: 310px">
+			<button type="button" id="fontButton">Cycle fonts</button>
+			<p id="currentFontfamily"> </p>
+		</div>
 	</div>	
-	<div class="min" style="top: 220px">
-		<p>hanzi 10</p>
-	</div>	
-	<div class="slider" id="hanziFontsize" style="top: 220px">
-		<div class="bar">
-		</div>
-		<div class="knob">
-		</div>
-	</div>
-	<div class="max" style="top: 220px">
-		<p>30</p>
-	</div>	
-	</div>	
-	<div id="centered" style="width:320px; margin:auto; background-color:white">
+	<div id="centered" style="width:312px; margin:auto; background-color:white">
 		<div id='translation'></div>
 		<div id="translationTriangle1"></div>
 		<div id="translationTriangle2"></div>

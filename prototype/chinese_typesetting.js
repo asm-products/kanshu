@@ -67,7 +67,6 @@ function addHanziWidths(chineseText, font){
 function phraseMouseenter(divEntered, index){
     //get definition and measure height
 	var definitions = chineseText.definitions[index];
-	$("#hsk").html(chineseText.hsks[index])
 	$("#translation").html(definitions);
     $("#translation").css('display', 'block');
     var translationHeight = $("#translation").outerHeight();
@@ -208,6 +207,10 @@ function changeHanziFontsize(fontsize){
     chineseText = addHanziWidths(chineseText, fontsize);
 }
 
+function changeSpacing(spacing){
+    $(".phrase").css('padding-left', spacing + 'px')
+    $(".phrase").css('padding-right', spacing + 'px')  
+}
 
 function setKnob(slider, x) {
 	var knobX = x - knobMid;
@@ -229,6 +232,11 @@ function setKnob(slider, x) {
             //between 10 and 30
             var sliderLevel = 2 * (Math.floor(knobX/12) + 5);
             changeHanziFontsize(sliderLevel);
+            break;
+        case 'spacing':
+            //between 0 and 10
+            var sliderLevel = Math.floor(knobX/12);
+            changeSpacing(sliderLevel)
             break;
     }
     $(slider).children().filter(".knob").html("<p>" + sliderLevel + "</p>");
@@ -259,6 +267,9 @@ function main(){
 		addPhrase(chineseText.pinyins[i], chineseText.hanzis[i], chineseText.punc[i], i);
 	}
 
+    changeHanziFontsize(hanziFontsize)
+    changePinyinFontsize(pinyinFontsize)
+
 	knobMid = $(".knob").outerWidth()/2.0;
 
 	$(".slider").mousedown(function(e){
@@ -273,16 +284,38 @@ function main(){
 	sliderWidth = $(".slider").outerWidth() - $(".knob").outerWidth();
 	sliderStep = sliderWidth/7;
 
+    initialSpacing = 2;
+    changeSpacing(2);
+
     $("#mainSlider").children().filter(".knob").html("<p> 0 </p>")
     $("#pinyinFontsize").children().filter(".knob").html("<p>" + pinyinFontsize + "</p>")
     $("#pinyinFontsize").children().filter(".knob").css('left', (pinyinFontsize - 6) * 10 + 2);
     $("#hanziFontsize").children().filter(".knob").html("<p>" + hanziFontsize + "</p>")
     $("#hanziFontsize").children().filter(".knob").css('left', (hanziFontsize - 10) * 6);
+    $("#spacing").children().filter(".knob").html("<p>" + initialSpacing + "</p>")
+    $("#spacing").children().filter(".knob").css('left', (initialSpacing) * 12 + 2);
+
 
 	$("body").mouseup(function(){
 		mouseIsDown = false;
 	})
 
+    $("#fontButton").click(function(e){
+        cycleFonts();
+    })
+
+    fontFamilies = ['Helvetica, Arial, "Times New Roman", "FangSong", "仿宋", STFangSong, "华文仿宋", serif', 'Arial, Helvetica, tahoma, verdana, 宋体, SimSun, 华文细黑, STXihei, sans-serif','Arial, Helvetica, "KaiTi", "楷体", STKaiti, "华文楷体", serif']
+    currentFamily = 0; 
+}
+
+function cycleFonts(){
+    currentFamily++
+    if(currentFamily >= fontFamilies.length){
+        currentFamily = 0;
+    }
+    $("#currentFontfamily").html(fontFamilies[currentFamily])
+    $(".phrase").css('font-family', fontFamilies[currentFamily])
+    $(".punc").css('font-family', fontFamilies[currentFamily])    
 }
 
 
