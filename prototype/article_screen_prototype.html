@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="sample_processed_article2.js"></script>
+	<script type="text/javascript" src="sample_processed_article2_reversed_dictionary.js"></script>	
+	<style>
+		p {
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+
+		#centered{
+			padding: 0px 4px;
+		}
+
+		.phrase{
+			display: inline-block;
+			padding: 4px 0px;
+			font-family: Helvetica, Arial, "Times New Roman", "FangSong", "仿宋", STFangSong, "华文仿宋", serif;				
+		}
+		
+		.punc{
+			display: inline-block;
+			padding: 5px 0px;
+			font-family: Helvetica, Arial, "FangSong", "仿宋", STFangSong, "华文仿宋", serif;			
+		}
+
+		.phrase span p{
+			color: inherit;
+		}
+
+		.inlineDefinition {
+			color: #444444;
+			text-wrap: none;
+			text-overflow: ellipsis;
+  			white-space: nowrap;
+  			overflow: hidden;			
+		}
+
+		#translation{
+			position: absolute;
+			background-color: #d4554b;
+			color: white;
+			padding: 10px;
+			max-width: 300px; /* 320 minus 2 * padding */
+			border-radius: 5px;
+			display: none;
+		}
+
+		#translationTriangle1 {
+		  	content: "";
+		  	position: absolute;
+		  	bottom: -12px; /* value = - border-top-width - border-bottom-width */
+		  	left: 0px;
+		  	border: 0;
+		  	border-right-width: 20px; /* vary this value to change the angle of the vertex */
+		  	border-bottom-width: 12px; /* triangle height */
+		  	height: 0px; 
+		  	border-style: solid;
+		  	border-color: transparent #d4554b;
+		  	width: 0;
+		  	display: none;
+		}
+
+		#translationTriangle2 {
+			content: "";
+			position: absolute;
+			bottom: -12px; /* value = - border-top-width - border-bottom-width */
+			left: 0px;
+			border: 0;
+			border-bottom-width: 12px; /* triangle height */
+			border-right-width: 5px; /* vary this value to change the angle of the vertex */
+			height: 0px; 
+			border-style: solid;
+			border-color: transparent #ffffff;
+			width: 0;
+			display: none;
+		}
+
+		#toolbar{
+			background-color: #ffffff;
+			position: fixed;
+			top: 10px;
+			left: 10px;
+			width: 400px;
+			height: 400px;	
+			font-size: 24pt;	
+			text-align: center;	
+		}
+
+		#hsk{
+			padding: 10px;
+		}
+
+		.slider{
+			background-color: #ffffff;
+			position: fixed;
+			top: 30px;
+			left: 140px;
+			width: 170px;
+			height: 50px;
+		}
+
+		.bar{
+			position: relative;
+			top: 25px;
+			width: 170px;
+			height: 2px;
+			background-color: #000000;
+		}
+		
+		.knob {
+            position: relative;
+            left: 0;
+            background-color: #c0c0c0;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 24px
+        }
+
+        .knob p {
+        	padding: 10px;
+        }
+
+        .min {
+        	position: fixed;
+        	top: 30px;
+        	left: 10px;
+        	width: 120px;
+        	height: 50px;
+        	background-color: #ffffff;
+        	font-size: 16pt;
+        }
+
+        .max {
+        	position: fixed;
+        	top: 30px;
+        	left: 320px;
+        	width: 40px;
+        	height: 50px;
+        	background-color: #ffffff;
+        	font-size: 16pt;
+        }
+
+        .min p, .max p {
+        	padding: 12px 6px;
+        	text-align: justify;
+        }
+
+        /* to justify one line */
+        .min p:after{
+		    content: "";
+		    display: inline-block;
+		    width: 100%;    
+		}
+
+		.buttons {
+			position: fixed;
+			left: 10px;
+			width: 380px;
+			font-size: medium;
+		}
+
+	</style>
+	
+</head>
+
+<body style="background-color:#000000" onload='main()'>
+	<div id="toolbar">
+		<div class="min">
+			<p>hsk 0</p>
+		</div>
+		<div class="slider" id="mainSlider">
+			<div class="bar">
+			</div>
+			<div class="knob">
+			</div>
+		</div>
+		<div class="max">
+			<p>7</p>
+		</div>
+		<div class="min" style="top: 100px">
+			<p>pinyin 6</p>
+		</div>
+		<div class="slider" id="pinyinFontsize" style="top: 100px">
+			<div class="bar">
+			</div>
+			<div class="knob">
+			</div>
+		</div>
+		<div class="max" style="top: 100px">
+			<p>18</p>
+		</div>	
+		<div class="min" style="top: 170px">
+			<p>hanzi 10</p>
+		</div>	
+		<div class="slider" id="hanziFontsize" style="top: 170px">
+			<div class="bar">
+			</div>
+			<div class="knob">
+			</div>
+		</div>
+		<div class="max" style="top: 170px">
+			<p>30</p>
+		</div>	
+		<div class="min" style="top: 240px">
+			<p>spacing 0</p>
+		</div>	
+		<div class="slider" id="spacing" style="top: 240px">
+			<div class="bar">
+			</div>
+			<div class="knob">
+			</div>
+		</div>
+		<div class="max" style="top: 240px">
+			<p>10</p>
+		</div>			
+		<div class="buttons" style="top: 310px">
+			<button type="button" id="inlineDefinitionButton">Toggle inline definition</button><br />
+			<button type="button" id="fontButton">Cycle fonts</button>
+			<p id="currentFontfamily"> </p>
+		</div>
+	</div>	
+	<div id="centered" style="width:312px; margin:auto; background-color:white">
+		<div id='translation'></div>
+		<div id="translationTriangle1"></div>
+		<div id="translationTriangle2"></div>
+
+	</div>
+	<script type="text/javascript" src="chinese_typesetting.js"></script>	
+</body>
+</html>
